@@ -46,6 +46,12 @@ usethis::use_description(
 
 # Amend description import and suggests
 attachment::att_amend_desc()
+
+
+
+# readme
+usethis::use_readme_rmd()
+
 ```
 
 

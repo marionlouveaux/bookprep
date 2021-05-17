@@ -1,0 +1,11 @@
+--- 
+title: "book_title"
+author: "author_name"
+date: "creation_date"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib]
+biblio-style: apalike
+link-citations: yes
+description: "short_description"
+---

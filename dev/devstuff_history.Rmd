@@ -29,6 +29,23 @@ usethis::use_build_ignore("dev/")
 
 # git
 usethis::use_git()
+
+# description
+usethis::use_description(
+  fields = list(
+    Title = "Prepares a bookdown project from a skeleton and a template",
+    `Authors@R` = 'person("Marion", "Louveaux", email = "marion.louveaux@gmail.com",
+                          role = c("aut", "cre"),
+                          comment = c(ORCID = "0000-0002-1794-3748"))',
+    Description = 'Prepares a bookdown project from a customizable bookdown skeleton and, if needed, a template for the chapters. Helps creating reproducible yet flexible bookdown projects, for instance to deliver data analyses to customers following a standardized format.',
+    License = "GPL-3",
+    URL = "https://github.com/marionlouveaux/bookprep",
+    BugReports = "https://github.com/marionlouveaux/bookprep/issues"
+  )
+)
+
+# Amend description import and suggests
+attachment::att_amend_desc()
 ```
 
 

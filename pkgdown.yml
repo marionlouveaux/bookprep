@@ -1,0 +1,7 @@
+pandoc: 2.7.3
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  Getting-started: Getting-started.html
+last_built: 2021-05-20T08:56Z
+

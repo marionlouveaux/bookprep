@@ -1,0 +1,124 @@
+---
+title: "Getting started"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(bookprep)
+```
+
+# Manual cleaning of bookdown skeleton
+
+Keeping only the following files: "_bookdown.yml", "_output.yml", "index.Rmd", "preamble.tex", "README.md", "style.css". storing them in `/book_skeleton`.     
+
+Cleaning info specific to bookdown package and replacing them by generic variable names:    
+- Index.Rmd: create variable book_title, author_name, creation_date (default to `r Sys.Date()`), short_description, index_title and index_content   
+- _bookdown.yml: reuse book_title variable  
+- _output.yml: reuse book_title variable, add info that this book was published with {bookprep}             
+- README.md: reuse variable book_title and specifies that this book was published with {bookprep}             
+
+
+
+
+# Find and replace all variables in one text file of the book skeleton
+
+```{r examples-1}
+# copy to a temporary file to avoid overwriting the package
+index_tmp <- tempfile(pattern = "index-")
+
+file.copy(from = system.file("book_skeleton/index.Rmd", package = "bookprep"), to = index_tmp)
+
+find_and_replace(
+  file = index_tmp,
+  replacements = c(
+    "book_title" = "My book",
+    "author_name" = "Marion Louveaux",
+    "creation_date" = "`r Sys.Date()`",
+    "short_description" = "An example of book with {bookprep}.",
+    "index_title" = "Context"
+  )
+)
+```
+
+# Modify all variables in all files
+
+```{r examples-2}
+# Create temporary directory for reproducible example
+dir_tmp <- tempfile(pattern = "proj-")
+dir.create(dir_tmp)
+# browseURL(dir_tmp)
+
+# prepare_files() requires a directory with some files inside to look for replacements
+file.copy(from = system.file("book_skeleton", package = "bookprep"), to = dir_tmp, recursive = TRUE)
+
+prepare_files(
+  path = file.path("C:/Users/Marion/Desktop", "skeleton"),
+  replacements = c(
+    "book_title" = "My book",
+    "author_name" = "Marion Louveaux",
+    "creation_date" = "`r Sys.Date()`",
+    "short_description" = "An example of book with {bookprep}.",
+    "index_title" = "Context"
+  )
+)
+```
+
+# Prepare customised bookdown
+
+```{r examples-3, eval = FALSE}
+# Create temporary directory for reproducible example
+dir_tmp <- tempfile(pattern = "proj-")
+dir.create(dir_tmp)
+# browseURL(dir_tmp)
+
+prepare_book(
+  path = dir_tmp,
+  template = system.file("book_template_example", package = "bookprep"),
+  replacements = c(
+    # replacements mandatory for the bookdown skeleton
+    "book_title" = "My book",
+    "author_name" = "Marion Louveaux",
+    "creation_date" = "`r Sys.Date()`",
+    "short_description" = "An example of book with {bookprep}.",
+    # replacement specific to my template that you can add if you want
+    "index_title" = "Context"
+  )
+)
+```
+
+# Initialize a template
+
+- index.txt or index.md: Level 1 title and/or content     
+- Some Rmd files    
+
+
+```{r examples-4}
+# Create temporary directory for reproducible example
+dir_tmp <- tempfile(pattern = "proj-")
+dir.create(dir_tmp)
+# browseURL(dir_tmp)
+
+initialize_template(path = dir_tmp)
+```
+
+# Add a custom bib file
+
+The book skeleton includes a book.bib file containing references to {bookdown} and {bookprep}. The function below copies a new .bib file to the root of the project and modifies the index.Rmd to add this file.      
+
+
+
+```{r examples-5}
+
+```
+

@@ -15,9 +15,19 @@ Description: Prepares a bookdown project from a customizable
 License: GPL-3
 URL: https://github.com/marionlouveaux/bookprep
 BugReports: https://github.com/marionlouveaux/bookprep/issues
-Suggests: 
+Imports: 
     knitr,
-    rmarkdown
+    purrr,
+    rstudioapi,
+    stringr,
+    usethis,
+    xfun
+Suggests: 
+    rmarkdown,
+    testthat,
+    withr
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

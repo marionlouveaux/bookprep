@@ -8,6 +8,8 @@
 ![GitHub R package
 version](https://img.shields.io/github/r-package/v/marionlouveaux/bookprep?style=plastic)
 ![GitHub](https://img.shields.io/github/license/marionlouveaux/bookprep?style=plastic)
+[![R build
+status](https://github.com/marionlouveaux/bookprep/workflows/R-CMD-check/badge.svg)](https://github.com/marionlouveaux/bookprep/actions)
 <!-- badges: end -->
 
 <!-- Short description -->

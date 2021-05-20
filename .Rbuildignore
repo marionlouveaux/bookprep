@@ -3,3 +3,5 @@
 ^LICENSE\.md$
 ^dev$
 ^README\.Rmd$
+^bookprep\.Rproj$
+^\.github$

@@ -10,6 +10,8 @@ version](https://img.shields.io/github/r-package/v/marionlouveaux/bookprep?style
 ![GitHub](https://img.shields.io/github/license/marionlouveaux/bookprep?style=plastic)
 [![R build
 status](https://github.com/marionlouveaux/bookprep/workflows/R-CMD-check/badge.svg)](https://github.com/marionlouveaux/bookprep/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/marionlouveaux/bookprep/branch/master/graph/badge.svg)](https://codecov.io/gh/marionlouveaux/bookprep?branch=master)
 <!-- badges: end -->
 
 <!-- Short description -->
@@ -54,3 +56,10 @@ devtools::install_github("marionlouveaux/bookprep")
 {bookdown}: <https://bookdown.org/>
 
 ## How to cite
+
+## Code of Conduct
+
+Please note that the bookprep project is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.

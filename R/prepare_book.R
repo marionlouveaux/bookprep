@@ -7,7 +7,6 @@
 #' @inheritParams prepare_files
 #' @importFrom usethis create_project
 #' @importFrom stringr str_replace
-#' @importFrom rstudioapi isAvailable
 #'
 #' @return used for side effect: file creation in path
 #' @export
@@ -47,8 +46,9 @@ prepare_book <- function(
   create_project(path = path, open = FALSE)
 
   # Modify buildType: "BuildType: Package" to "BuildType: Website"
-  if (isAvailable()) { #rstudioapi available
-    proj_lines <- readLines(list.files(path, pattern = "[.]Rproj$", full.names = TRUE))
+  rproj_path <- list.files(path, pattern = "[.]Rproj$", full.names = TRUE)
+  if (length(rproj_path) != 0) { #rstudioapi available
+    proj_lines <- readLines(rproj_path[1])
     proj_lines_modified <- str_replace(
       string = proj_lines,
       pattern = "BuildType: Package",

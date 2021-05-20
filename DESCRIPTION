@@ -13,12 +13,12 @@ Description: Prepares a bookdown project from a customizable
     creating reproducible yet flexible bookdown projects, for instance to
     deliver data analyses to customers following a standardized format.
 License: GPL-3
-URL: https://github.com/marionlouveaux/bookprep
+URL: https://marionlouveaux.github.io/bookprep/,
+    https://github.com/marionlouveaux/bookprep
 BugReports: https://github.com/marionlouveaux/bookprep/issues
 Imports: 
     knitr,
     purrr,
-    rstudioapi,
     stringr,
     usethis,
     xfun

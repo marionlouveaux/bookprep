@@ -27,13 +27,14 @@ withr::with_dir(
 
 test_that("prepare_book works", {
   expect_true(file.exists(file.path(dir_tmp, "index.Rmd")))
-  if (rstudioapi::isAvailable()){
+
   # checks that Rproj exists
   rproj_path <- list.files(dir_tmp, pattern = "[.]Rproj$", full.names = TRUE)
-  expect_length(rproj_path, 1)
-  # Checks that build type is website in Rproj
-  rproj_content <- readLines(rproj_path)
-  expect_equal(rproj_content[14], "BuildType: Website")
+  if (length(rproj_path) != 0){
+    expect_length(rproj_path, 1)
+    # Checks that build type is website in Rproj
+    rproj_content <- readLines(rproj_path)
+    expect_equal(rproj_content[14], "BuildType: Website")
   }
   # Checks that there is an extra.css file in the book template example
   css_path <- list.files(system.file("book_template_example", package = "bookprep"),

@@ -5,3 +5,5 @@
 ^README\.Rmd$
 ^bookprep\.Rproj$
 ^\.github$
+^codecov\.yml$
+^CODE_OF_CONDUCT\.md$

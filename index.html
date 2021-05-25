@@ -111,7 +111,38 @@ install.packages("bookprep")
 <a href="#example" class="anchor"></a>Example</h2>
 <!-- Brief demo usage -->
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#library(bookprep)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://marionlouveaux.github.io/bookprep/">bookprep</a></span><span class="op">)</span>
+
+<span class="co"># Create temporary directory for reproducible example</span>
+<span class="va">dir_tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"proj-"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="va">dir_tmp</span><span class="op">)</span>
+<span class="co"># browseURL(dir_tmp)</span>
+
+<span class="fu"><a href="reference/prepare_book.html">prepare_book</a></span><span class="op">(</span>
+  path <span class="op">=</span> <span class="va">dir_tmp</span>,
+  template <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"book_template_example"</span>, package <span class="op">=</span> <span class="st">"bookprep"</span><span class="op">)</span>,
+  replacements <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    <span class="co"># replacements mandatory for the bookdown skeleton</span>
+    <span class="st">"book_title"</span> <span class="op">=</span> <span class="st">"My book"</span>,
+    <span class="st">"author_name"</span> <span class="op">=</span> <span class="st">"Marion Louveaux"</span>,
+    <span class="st">"creation_date"</span> <span class="op">=</span> <span class="st">"`r Sys.Date()`"</span>,
+    <span class="st">"short_description"</span> <span class="op">=</span> <span class="st">"An example of book with {bookprep}."</span>,
+    <span class="co"># replacement specific to my template that you can add if you want</span>
+    <span class="st">"index_title"</span> <span class="op">=</span> <span class="st">"Context"</span>
+  <span class="op">)</span>
+<span class="op">)</span>
+<span class="co">#&gt; v Setting active project to 'C:/Users/Marion/AppData/Local/Temp/RtmpSqsbax/proj-3dec4b867975'</span>
+<span class="co">#&gt; v Creating 'R/'</span>
+<span class="co">#&gt; v Writing a sentinel file '.here'</span>
+<span class="co">#&gt; * Build robust paths within your project via `here::here()`</span>
+<span class="co">#&gt; * Learn more at &lt;https://here.r-lib.org&gt;</span>
+<span class="co">#&gt; v Setting active project to '&lt;no active project&gt;'</span>
+<span class="co">#&gt; [1] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpSqsbax\\proj-3dec4b867975/_bookdown.yml"     </span>
+<span class="co">#&gt; [2] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpSqsbax\\proj-3dec4b867975/_output.yml"       </span>
+<span class="co">#&gt; [3] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpSqsbax\\proj-3dec4b867975/01-exploration.Rmd"</span>
+<span class="co">#&gt; [4] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpSqsbax\\proj-3dec4b867975/02-results.Rmd"    </span>
+<span class="co">#&gt; [5] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpSqsbax\\proj-3dec4b867975/index.Rmd"         </span>
+<span class="co">#&gt; [6] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpSqsbax\\proj-3dec4b867975/README.md"</span></code></pre></div>
 </div>
 <div id="see-also" class="section level2">
 <h2 class="hasAnchor">

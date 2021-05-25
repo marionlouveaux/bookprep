@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Initialize a book template with named chapters and content for — initialize_template • bookprep</title>
+<title>Initialize a book template with named chapters and base content — initialize_template • bookprep</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Initialize a book template with named chapters and content for — initialize_template" />
-<meta property="og:description" content="Initialize a book template with named chapters and content for" />
+<meta property="og:title" content="Initialize a book template with named chapters and base content — initialize_template" />
+<meta property="og:description" content="Initialize a book template with named chapters and base content" />
 
 
 
@@ -120,13 +120,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Initialize a book template with named chapters and content for</h1>
+    <h1>Initialize a book template with named chapters and base content</h1>
     <small class="dont-index">Source: <a href='https://github.com/marionlouveaux/bookprep/blob/master/R/initialize_template.R'><code>R/initialize_template.R</code></a></small>
     <div class="hidden name"><code>initialize_template.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Initialize a book template with named chapters and content for</p>
+    <p>Initialize a book template with named chapters and base content</p>
     </div>
 
     <pre class="usage"><span class='fu'>initialize_template</span><span class='op'>(</span>
@@ -162,7 +162,10 @@
 <span class='fu'><a href='https://rdrr.io/r/base/files2.html'>dir.create</a></span><span class='op'>(</span><span class='va'>dir_tmp</span><span class='op'>)</span>
 <span class='co'># browseURL(dir_tmp)</span>
 
-<span class='fu'>initialize_template</span><span class='op'>(</span>path <span class='op'>=</span> <span class='va'>dir_tmp</span><span class='op'>)</span>
+<span class='fu'>initialize_template</span><span class='op'>(</span>path <span class='op'>=</span> <span class='va'>dir_tmp</span>, 
+                    chapters <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Introduction"</span>, <span class='st'>"Material and Methods"</span>,
+                                 <span class='st'>"Results"</span>, <span class='st'>"Discussion"</span><span class='op'>)</span>,
+                                references <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

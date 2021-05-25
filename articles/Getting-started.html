@@ -106,61 +106,75 @@
 <a href="#template-creation" class="anchor"></a>Template creation</h1>
 <p>The template contains Rmd files corresponding to the named chapters, an index.md file containing the content of the future index and, if needed, an extra .css file. Named chapters and index.md can include variables. These variables can be replaced with custom content using the <code>replacements</code> parameter of <code><a href="../reference/prepare_book.html">prepare_book()</a></code>.</p>
 <p>An example of template is included in {bookprep} in <code>/book_template_example</code>. You can also provide your own template, or create a minimal one using the function <code><a href="../reference/initialize_template.html">initialize_template()</a></code>.</p>
-</div>
-<div id="find-and-replace-all-variables-in-one-text-file-of-the-book-skeleton" class="section level1">
-<h1 class="hasAnchor">
-<a href="#find-and-replace-all-variables-in-one-text-file-of-the-book-skeleton" class="anchor"></a>Find and replace all variables in one text file of the book skeleton</h1>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># copy to a temporary file to avoid overwriting the package</span>
-<span class="va">index_tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"index-"</span><span class="op">)</span>
+<!-- 
 
-<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.copy</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"book_skeleton/index.Rmd"</span>, package <span class="op">=</span> <span class="st">"bookprep"</span><span class="op">)</span>, to <span class="op">=</span> <span class="va">index_tmp</span><span class="op">)</span>
-<span class="co">#&gt; [1] TRUE</span>
+# Find and replace all variables in one text file of the book skeleton
 
-<span class="fu"><a href="../reference/find_and_replace.html">find_and_replace</a></span><span class="op">(</span>
-  file <span class="op">=</span> <span class="va">index_tmp</span>,
-  replacements <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
-    <span class="st">"book_title"</span> <span class="op">=</span> <span class="st">"My book"</span>,
-    <span class="st">"author_name"</span> <span class="op">=</span> <span class="st">"Marion Louveaux"</span>,
-    <span class="st">"creation_date"</span> <span class="op">=</span> <span class="st">"`r Sys.Date()`"</span>,
-    <span class="st">"short_description"</span> <span class="op">=</span> <span class="st">"An example of book with {bookprep}."</span>,
-    <span class="st">"index_title"</span> <span class="op">=</span> <span class="st">"Context"</span>
-  <span class="op">)</span>
-<span class="op">)</span>
-<span class="co">#&gt; [1] "/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpvA3wr9/index-8f61c5213d4"</span></code></pre></div>
-</div>
-<div id="modify-all-variables-in-all-files" class="section level1">
-<h1 class="hasAnchor">
-<a href="#modify-all-variables-in-all-files" class="anchor"></a>Modify all variables in all files</h1>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Create temporary directory for reproducible example</span>
-<span class="va">dir_tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"proj-"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="va">dir_tmp</span><span class="op">)</span>
-<span class="co"># browseURL(dir_tmp)</span>
+-->
+<!-- 
 
-<span class="co"># prepare_files() requires a directory with some files inside to look for replacements</span>
-<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.copy</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"book_skeleton"</span>, package <span class="op">=</span> <span class="st">"bookprep"</span><span class="op">)</span>, to <span class="op">=</span> <span class="va">dir_tmp</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; [1] TRUE</span>
 
-<span class="fu"><a href="../reference/prepare_files.html">prepare_files</a></span><span class="op">(</span>
-  path <span class="op">=</span> <span class="va">dir_tmp</span>,
-  replacements <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
-    <span class="st">"book_title"</span> <span class="op">=</span> <span class="st">"My book"</span>,
-    <span class="st">"author_name"</span> <span class="op">=</span> <span class="st">"Marion Louveaux"</span>,
-    <span class="st">"creation_date"</span> <span class="op">=</span> <span class="st">"`r Sys.Date()`"</span>,
-    <span class="st">"short_description"</span> <span class="op">=</span> <span class="st">"An example of book with {bookprep}."</span>,
-    <span class="st">"index_title"</span> <span class="op">=</span> <span class="st">"Context"</span>
-  <span class="op">)</span>
-<span class="op">)</span>
-<span class="co">#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpvA3wr9/proj-8f618b45b52/book_skeleton/_bookdown.yml"</span>
-<span class="co">#&gt; [2] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpvA3wr9/proj-8f618b45b52/book_skeleton/_output.yml"  </span>
-<span class="co">#&gt; [3] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpvA3wr9/proj-8f618b45b52/book_skeleton/index.Rmd"    </span>
-<span class="co">#&gt; [4] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpvA3wr9/proj-8f618b45b52/book_skeleton/README.md"</span></code></pre></div>
+```r
+# copy to a temporary file to avoid overwriting the package
+index_tmp <- tempfile(pattern = "index-")
+
+file.copy(from = system.file("book_skeleton/index.Rmd", package = "bookprep"), to = index_tmp)
+#> [1] TRUE
+
+bookprep:::find_and_replace(
+  file = index_tmp,
+  replacements = c(
+    "book_title" = "My book",
+    "author_name" = "Marion Louveaux",
+    "creation_date" = "`r Sys.Date()`",
+    "short_description" = "An example of book with {bookprep}.",
+    "index_title" = "Context"
+  )
+)
+#> [1] "/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmp9xTIt9/index-6bd13ba414"
+```
+
+-->
+<!-- 
+
+# Modify all variables in all files
+
+-->
+<!-- 
+
+
+```r
+# Create temporary directory for reproducible example
+dir_tmp <- tempfile(pattern = "proj-")
+dir.create(dir_tmp)
+# browseURL(dir_tmp)
+
+# prepare_files() requires a directory with some files inside to look for replacements
+file.copy(from = system.file("book_skeleton", package = "bookprep"), to = dir_tmp, recursive = TRUE)
+#> [1] TRUE
+
+bookprep:::prepare_files(
+  path = dir_tmp,
+  replacements = c(
+    "book_title" = "My book",
+    "author_name" = "Marion Louveaux",
+    "creation_date" = "`r Sys.Date()`",
+    "short_description" = "An example of book with {bookprep}.",
+    "index_title" = "Context"
+  )
+)
+#> [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp9xTIt9/proj-6bd1533839e/book_skeleton/_bookdown.yml"
+#> [2] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp9xTIt9/proj-6bd1533839e/book_skeleton/_output.yml"  
+#> [3] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp9xTIt9/proj-6bd1533839e/book_skeleton/index.Rmd"    
+#> [4] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp9xTIt9/proj-6bd1533839e/book_skeleton/README.md"
+```
+
+-->
 </div>
 <div id="prepare-customised-bookdown" class="section level1">
 <h1 class="hasAnchor">
 <a href="#prepare-customised-bookdown" class="anchor"></a>Prepare customised bookdown</h1>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Create temporary directory for reproducible example</span>
 <span class="va">dir_tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"proj-"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="va">dir_tmp</span><span class="op">)</span>
@@ -188,7 +202,7 @@
 </li>
 <li>some Rmd files</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Create temporary directory for reproducible example</span>
 <span class="va">dir_tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"proj-"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="va">dir_tmp</span><span class="op">)</span>

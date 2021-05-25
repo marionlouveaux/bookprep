@@ -167,7 +167,7 @@
 <span class='co'># prepare_files() requires a directory with some files inside to look for replacements</span>
 <span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.copy</a></span><span class='op'>(</span>from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"book_skeleton"</span>, package <span class='op'>=</span> <span class='st'>"bookprep"</span><span class='op'>)</span>, to <span class='op'>=</span> <span class='va'>dir_tmp</span>, recursive <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='fu'>prepare_files</span><span class='op'>(</span>
+<span class='fu'>bookprep</span><span class='fu'>:::</span><span class='fu'>prepare_files</span><span class='op'>(</span>
   path <span class='op'>=</span> <span class='va'>dir_tmp</span>,
   replacements <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
     <span class='st'>"book_title"</span> <span class='op'>=</span> <span class='st'>"My book"</span>,
@@ -177,10 +177,10 @@
     <span class='st'>"index_title"</span> <span class='op'>=</span> <span class='st'>"Context"</span>
   <span class='op'>)</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmppkeUjG/proj-8c24a171aec/book_skeleton/_bookdown.yml"
-#&gt; [2] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmppkeUjG/proj-8c24a171aec/book_skeleton/_output.yml"  
-#&gt; [3] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmppkeUjG/proj-8c24a171aec/book_skeleton/index.Rmd"    
-#&gt; [4] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmppkeUjG/proj-8c24a171aec/book_skeleton/README.md"    </div></pre>
+</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpb1xrTT/proj-6825285f49a/book_skeleton/_bookdown.yml"
+#&gt; [2] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpb1xrTT/proj-6825285f49a/book_skeleton/_output.yml"  
+#&gt; [3] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpb1xrTT/proj-6825285f49a/book_skeleton/index.Rmd"    
+#&gt; [4] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpb1xrTT/proj-6825285f49a/book_skeleton/README.md"    </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

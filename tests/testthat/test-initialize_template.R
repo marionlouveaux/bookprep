@@ -14,3 +14,23 @@ test_that("initialize_template works", {
   results_content <- readLines(file.path(dir_tmp, "02-Results.Rmd"))
   expect_equal(results_content[1], paste0("# ", "Results"))
 })
+
+
+
+# Create temporary directory for reproducible example
+dir_tmp <- tempfile(pattern = "proj-")
+dir.create(dir_tmp)
+# browseURL(dir_tmp)
+file.create(file.path(dir_tmp, "00-Preface.Rmd"))
+
+test_that("initialize_template gives error", {
+  skip_if_translated()
+  expect_error(
+    object = initialize_template(
+      path = dir_tmp,
+      chapters = c("Preface", "Introduction"),
+      references = "References"
+    ),
+    "The file .* exists."
+  )
+})

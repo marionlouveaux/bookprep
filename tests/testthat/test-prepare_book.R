@@ -52,3 +52,13 @@ test_that("prepare_book works", {
   expect_equal(index_content[13], "")
   expect_equal(index_content[14], "Write here what you want to see in the <span class=\"red\">index</span>")
 })
+
+
+test_that("initialize_template gives error", {
+  skip_if_translated()
+  expect_error(object = prepare_book(path = dir_tmp,
+                                     template = "non_existing_path"
+                                     ),
+               ".* directory does not exist."
+               )
+})

@@ -456,6 +456,16 @@ test_that("prepare_book works", {
   expect_equal(index_content[13], "")
   expect_equal(index_content[14], "Write here what you want to see in the <span class=\"red\">index</span>")
 })
+
+
+test_that("initialize_template gives error", {
+  skip_if_translated()
+  expect_error(object = prepare_book(path = dir_tmp,
+                                     template = "non_existing_path"
+                                     ),
+               ".* directory does not exist."
+               )
+})
 ```
 
 
@@ -527,6 +537,26 @@ test_that("initialize_template works", {
   expect_length(list.files(dir_tmp), 4)
   results_content <- readLines(file.path(dir_tmp, "02-Results.Rmd"))
   expect_equal(results_content[1], paste0("# ", "Results"))
+})
+
+
+
+# Create temporary directory for reproducible example
+dir_tmp <- tempfile(pattern = "proj-")
+dir.create(dir_tmp)
+# browseURL(dir_tmp)
+file.create(file.path(dir_tmp, "00-Preface.Rmd"))
+
+test_that("initialize_template gives error", {
+  skip_if_translated()
+  expect_error(
+    object = initialize_template(
+      path = dir_tmp,
+      chapters = c("Preface", "Introduction"),
+      references = "References"
+    ),
+    "The file .* exists."
+  )
 })
 ```
 

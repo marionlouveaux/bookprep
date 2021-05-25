@@ -14,7 +14,10 @@
 #' dir.create(dir_tmp)
 #' # browseURL(dir_tmp)
 #' 
-#' initialize_template(path = dir_tmp)
+#' initialize_template(path = dir_tmp, 
+#'                     chapters = c("Introduction", "Material and Methods",
+#'                                  "Results", "Discussion"),
+#'                                 references = NULL)
 initialize_template <- function(path, chapters = c("Preface", "Introduction"),
                                 references = "References") {
   rmd_tmp <- c(chapters, references)

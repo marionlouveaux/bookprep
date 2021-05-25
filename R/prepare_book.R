@@ -2,6 +2,7 @@
 #' This function creates an Rstudio project in path, sets build type to "website", copies the content of book_skeleton at the root of the project, copies all files from the book template, modifies pre-defined variable book_title, author_name, creation_date, as well as any variable added by the user in replacements (index_title, index_content...), and inserts the content of index.txt in index.Rmd (here containing the user defined variables index_title and index_content).   
 #'
 #' @param path where to create the bookdown
+#' @param skeleton path to directory containing bookdown skeleton
 #' @param template path to directory containing template files for chapters and index content
 #' @inheritParams find_and_replace
 #' @inheritParams prepare_files
@@ -39,6 +40,7 @@ prepare_book <- function(
                            "short_description" = "An example of book with {bookprep}.",
                            "index_title" = "Context"
                          ),
+                         skeleton = system.file("book_skeleton", package = "bookprep"),
                          template = system.file("book_template_example", package = "bookprep"),
                          pattern = "[.]Rmd$|[.]yml$|[.]md$") {
   # Create project
@@ -58,8 +60,7 @@ prepare_book <- function(
   }
 
   # Add all files from book skeleton
-  skeleton_dir <- system.file("book_skeleton", package = "bookprep")
-  file.copy(from = list.files(skeleton_dir, full.names = TRUE), to = path, recursive = TRUE)
+  file.copy(from = list.files(skeleton, full.names = TRUE), to = path, recursive = TRUE)
 
   # Add all files from book template (Rmd, css...) except index
   if (!dir.exists(template)) { # by default use the template of the package

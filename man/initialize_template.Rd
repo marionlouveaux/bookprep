@@ -2,7 +2,7 @@
 % Please edit documentation in R/initialize_template.R
 \name{initialize_template}
 \alias{initialize_template}
-\title{Initialize a book template with named chapters and content for}
+\title{Initialize a book template with named chapters and base content}
 \usage{
 initialize_template(
   path,
@@ -21,7 +21,7 @@ initialize_template(
 used for side effect: file creation in path
 }
 \description{
-Initialize a book template with named chapters and content for
+Initialize a book template with named chapters and base content
 }
 \examples{
 # Create temporary directory for reproducible example

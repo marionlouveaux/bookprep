@@ -1,4 +1,4 @@
-#' Initialize a book template with named chapters and content for 
+#' Initialize a book template with named chapters and base content 
 #'
 #' @param path where to create the template     
 #' @param chapters titles of Rmd files to include in the template    

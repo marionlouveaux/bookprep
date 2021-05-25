@@ -18,15 +18,23 @@ knitr::opts_chunk$set(
 library(bookprep)
 ```
 
-# Manual cleaning of bookdown skeleton
+# Bookdown skeleton creation     
 
-Keeping only the following files: "_bookdown.yml", "_output.yml", "index.Rmd", "preamble.tex", "README.md", "style.css". storing them in `/book_skeleton`.     
+The function `prepare_book()` requires a {bookdown} skeleton and a template. The {bookdown} skeleton contains only the following files: "_bookdown.yml", "_output.yml", "index.Rmd", "preamble.tex", "README.md", and "style.css". These files condition the architecture (the skeleton) of the future book, i.e. how it will be printed/rendered, its css style, link to bibliography and information about author, title and creation date. By default, `prepare_book()` uses the skeleton stored in `/book_skeleton` in the {bookprep} package. You can use your own skeleton if you prefer.        
 
-Cleaning info specific to bookdown package and replacing them by generic variable names:    
-- Index.Rmd: create variable book_title, author_name, creation_date (default to `r Sys.Date()`), short_description, index_title and index_content   
+The {bookdown} skeleton created for the {bookprep} package was created by cleaning info specific to the {bookdown} package and replacing them by generic variable names:      
+- Index.Rmd: create variable book_title, author_name, creation_date (default to `Sys.Date()`), short_description, index_title and index_content   
 - _bookdown.yml: reuse book_title variable  
 - _output.yml: reuse book_title variable, add info that this book was published with {bookprep}             
 - README.md: reuse variable book_title and specifies that this book was published with {bookprep}             
+
+
+
+# Template creation     
+
+The template contains Rmd files corresponding to the named chapters, an index.md file containing the content of the future index and, if needed, an extra .css file. Named chapters and index.md can include variables. These variables can be replaced with custom content using the `replacements` parameter of `prepare_book()`.    
+
+An example of template is included in {bookprep} in `/book_template_example`. You can also provide your own template, or create a minimal one using the function `initialize_template()`.    
 
 
 
@@ -100,7 +108,7 @@ prepare_book(
 # Initialize a template
 
 - index.txt or index.md: Level 1 title and/or content     
-- Some Rmd files    
+- some Rmd files    
 
 
 ```{r examples-4}

@@ -10,6 +10,7 @@ prepare_book(
   replacements = c(book_title = "My book", author_name = "Marion Louveaux",
     creation_date = "`r Sys.Date()`", short_description =
     "An example of book with {bookprep}.", index_title = "Context"),
+  skeleton = system.file("book_skeleton", package = "bookprep"),
   template = system.file("book_template_example", package = "bookprep"),
   pattern = "[.]Rmd$|[.]yml$|[.]md$"
 )
@@ -18,6 +19,8 @@ prepare_book(
 \item{path}{where to create the bookdown}
 
 \item{replacements}{a vector of correspondences between an input and an output. Input is fixed and corresponds to: book_title, author_name, creation_date, short_description and index_title}
+
+\item{skeleton}{path to directory containing bookdown skeleton}
 
 \item{template}{path to directory containing template files for chapters and index content}
 

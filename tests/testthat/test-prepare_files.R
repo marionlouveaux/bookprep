@@ -7,7 +7,7 @@ dir.create(dir_tmp)
 file.copy(from = system.file("book_skeleton", package = "bookprep"), to = dir_tmp, recursive = TRUE)
 
 modified_files <- prepare_files(
-  path = file.path(dir_tmp, "book_skeleton"),
+  path = dir_tmp,
   replacements = c(
     "book_title" = "My book",
     "author_name" = "Marion Louveaux",

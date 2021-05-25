@@ -71,7 +71,7 @@ dir.create(dir_tmp)
 file.copy(from = system.file("book_skeleton", package = "bookprep"), to = dir_tmp, recursive = TRUE)
 
 prepare_files(
-  path = file.path("C:/Users/Marion/Desktop", "skeleton"),
+  path = dir_tmp,
   replacements = c(
     "book_title" = "My book",
     "author_name" = "Marion Louveaux",

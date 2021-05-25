@@ -19,7 +19,7 @@
 #' file.copy(from = system.file("book_skeleton", package = "bookprep"), to = dir_tmp, recursive = TRUE)
 #' 
 #' prepare_files(
-#'   path = file.path("C:/Users/Marion/Desktop", "skeleton"),
+#'   path = dir_tmp,
 #'   replacements = c(
 #'     "book_title" = "My book",
 #'     "author_name" = "Marion Louveaux",
@@ -36,7 +36,7 @@ prepare_files <- function(path, replacements = c(
                             "index_title" = "Context"
                           ),
                           pattern = "[.]Rmd$|[.]yml$|[.]md$") {
-  all_files_in_path <- list.files(path, full.names = TRUE)
+  all_files_in_path <- list.files(path, full.names = TRUE, recursive = TRUE)
   files_to_modify <- grep(
     pattern = pattern,
     all_files_in_path

@@ -44,6 +44,18 @@ test_that("prepare_book works", {
   outputyml_path <- list.files(dir_tmp, pattern = "_output[.]yml$", full.names = TRUE) 
   outputyml_content <- readLines(outputyml_path)
   expect_length(grep(outputyml_content[2], pattern = "extra[.]css"), 1)
+  
+  
+  # Checks that there is an extra.bib file in the book template example
+  bib_path <- list.files(system.file("book_template_example", package = "bookprep"),
+                         pattern = "extra[.]bib$")
+  expect_length(bib_path, 1)
+  # Checks that the extra.bib is in the index.Rmd    
+  index_path <- list.files(dir_tmp, pattern = "index[.]Rmd$", full.names = TRUE) 
+  index_content <- readLines(index_path)
+  expect_length(grep(index_content[7], pattern = "extra[.]bib"), 1)
+  
+  
   # Checks that content of index.md has been copied in index.Rmd and index_title replaced 
   
   index_path <- list.files(dir_tmp, pattern = "index[.]Rmd$", full.names = TRUE) 

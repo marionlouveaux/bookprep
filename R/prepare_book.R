@@ -84,6 +84,22 @@ prepare_book <- function(
     )
     writeLines(text = output_modified, con = file.path(path, "_output.yml"))
   }
+  
+  # Detect bib files and modify index.Rmd
+  extra_bib <- basename(all_files_wo_index)[grepl("[.]bib$", basename(all_files_wo_index))]
+  if (length(extra_bib) != 0) {
+    index_lines <- readLines(file.path(path, "index.Rmd"))
+    index_modified <- str_replace(
+      string = index_lines,
+      pattern = "bibliography: \\[book[.]bib\\]$",
+      replacement = paste0(
+        "bibliography: [book.bib, ",
+        paste(extra_bib, collapse = ","), "]"
+      )
+    )
+    writeLines(text = index_modified, con = file.path(path, "index.Rmd"))
+  }  
+  
 
   # Copy content from index.md or index.txt
   # NB: this content can contain variables such as index_title and index_content

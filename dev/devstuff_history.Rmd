@@ -81,7 +81,7 @@ The {bookdown} skeleton created for the {bookprep} package was created by cleani
 
 # Template creation     
 
-The template contains Rmd files corresponding to the named chapters, an index.md file containing the content of the future index and, if needed, an extra .css file. Named chapters and index.md can include variables. These variables can be replaced with custom content using the `replacements` parameter of `prepare_book()`.    
+The template contains Rmd files corresponding to the named chapters, an index.md file containing the content of the future index and, if needed, an extra .css file and an extra .bib file. Named chapters and index.md can include variables. These variables can be replaced with custom content using the `replacements` parameter of `prepare_book()`.    
 
 An example of template is included in {bookprep} in `/book_template_example`. You can also provide your own template, or create a minimal one using the function `initialize_template()`.    
 
@@ -353,6 +353,22 @@ prepare_book <- function(
     )
     writeLines(text = output_modified, con = file.path(path, "_output.yml"))
   }
+  
+  # Detect bib files and modify index.Rmd
+  extra_bib <- basename(all_files_wo_index)[grepl("[.]bib$", basename(all_files_wo_index))]
+  if (length(extra_bib) != 0) {
+    index_lines <- readLines(file.path(path, "index.Rmd"))
+    index_modified <- str_replace(
+      string = index_lines,
+      pattern = "bibliography: \\[book[.]bib\\]$",
+      replacement = paste0(
+        "bibliography: [book.bib, ",
+        paste(extra_bib, collapse = ","), "]"
+      )
+    )
+    writeLines(text = index_modified, con = file.path(path, "index.Rmd"))
+  }  
+  
 
   # Copy content from index.md or index.txt
   # NB: this content can contain variables such as index_title and index_content
@@ -448,6 +464,18 @@ test_that("prepare_book works", {
   outputyml_path <- list.files(dir_tmp, pattern = "_output[.]yml$", full.names = TRUE) 
   outputyml_content <- readLines(outputyml_path)
   expect_length(grep(outputyml_content[2], pattern = "extra[.]css"), 1)
+  
+  
+  # Checks that there is an extra.bib file in the book template example
+  bib_path <- list.files(system.file("book_template_example", package = "bookprep"),
+                         pattern = "extra[.]bib$")
+  expect_length(bib_path, 1)
+  # Checks that the extra.bib is in the index.Rmd    
+  index_path <- list.files(dir_tmp, pattern = "index[.]Rmd$", full.names = TRUE) 
+  index_content <- readLines(index_path)
+  expect_length(grep(index_content[7], pattern = "extra[.]bib"), 1)
+  
+  
   # Checks that content of index.md has been copied in index.Rmd and index_title replaced 
   
   index_path <- list.files(dir_tmp, pattern = "index[.]Rmd$", full.names = TRUE) 
@@ -471,7 +499,7 @@ test_that("initialize_template gives error", {
 
 # Initialize a template
 
-- index.txt or index.md: Level 1 title and/or content     
+- index.txt or index.md: Level 1 title and index content     
 - some Rmd files    
 
 ```{r function-4}

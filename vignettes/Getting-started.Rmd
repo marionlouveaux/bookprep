@@ -32,7 +32,7 @@ The {bookdown} skeleton created for the {bookprep} package was created by cleani
 
 # Template creation     
 
-The template contains Rmd files corresponding to the named chapters, an index.md file containing the content of the future index and, if needed, an extra .css file. Named chapters and index.md can include variables. These variables can be replaced with custom content using the `replacements` parameter of `prepare_book()`.    
+The template contains Rmd files corresponding to the named chapters, an index.md file containing the content of the future index and, if needed, an extra .css file and an extra .bib file. Named chapters and index.md can include variables. These variables can be replaced with custom content using the `replacements` parameter of `prepare_book()`.    
 
 An example of template is included in {bookprep} in `/book_template_example`. You can also provide your own template, or create a minimal one using the function `initialize_template()`.    
 
@@ -125,7 +125,7 @@ prepare_book(
 
 # Initialize a template
 
-- index.txt or index.md: Level 1 title and/or content     
+- index.txt or index.md: Level 1 title and index content     
 - some Rmd files    
 
 

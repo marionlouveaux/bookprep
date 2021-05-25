@@ -5,7 +5,6 @@
 #' @importFrom stringr str_replace_all
 #'
 #' @return path of the modified file
-#' @export
 #'
 #' @examples
 #' # copy to a temporary file to avoid overwriting the package
@@ -13,7 +12,7 @@
 #' 
 #' file.copy(from = system.file("book_skeleton/index.Rmd", package = "bookprep"), to = index_tmp)
 #' 
-#' find_and_replace(
+#' bookprep:::find_and_replace(
 #'   file = index_tmp,
 #'   replacements = c(
 #'     "book_title" = "My book",

@@ -28,7 +28,7 @@ index_tmp <- tempfile(pattern = "index-")
 
 file.copy(from = system.file("book_skeleton/index.Rmd", package = "bookprep"), to = index_tmp)
 
-find_and_replace(
+bookprep:::find_and_replace(
   file = index_tmp,
   replacements = c(
     "book_title" = "My book",

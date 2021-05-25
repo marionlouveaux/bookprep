@@ -34,7 +34,7 @@ dir.create(dir_tmp)
 # prepare_files() requires a directory with some files inside to look for replacements
 file.copy(from = system.file("book_skeleton", package = "bookprep"), to = dir_tmp, recursive = TRUE)
 
-prepare_files(
+bookprep:::prepare_files(
   path = dir_tmp,
   replacements = c(
     "book_title" = "My book",

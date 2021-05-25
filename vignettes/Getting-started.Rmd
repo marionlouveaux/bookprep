@@ -37,9 +37,13 @@ The template contains Rmd files corresponding to the named chapters, an index.md
 An example of template is included in {bookprep} in `/book_template_example`. You can also provide your own template, or create a minimal one using the function `initialize_template()`.    
 
 
-
+<!-- 
 
 # Find and replace all variables in one text file of the book skeleton
+
+-->
+
+<!-- 
 
 ```{r examples-1}
 # copy to a temporary file to avoid overwriting the package
@@ -47,7 +51,7 @@ index_tmp <- tempfile(pattern = "index-")
 
 file.copy(from = system.file("book_skeleton/index.Rmd", package = "bookprep"), to = index_tmp)
 
-find_and_replace(
+bookprep:::find_and_replace(
   file = index_tmp,
   replacements = c(
     "book_title" = "My book",
@@ -59,7 +63,17 @@ find_and_replace(
 )
 ```
 
+-->
+
+
+
+<!-- 
+
 # Modify all variables in all files
+
+-->
+
+<!-- 
 
 ```{r examples-2}
 # Create temporary directory for reproducible example
@@ -70,7 +84,7 @@ dir.create(dir_tmp)
 # prepare_files() requires a directory with some files inside to look for replacements
 file.copy(from = system.file("book_skeleton", package = "bookprep"), to = dir_tmp, recursive = TRUE)
 
-prepare_files(
+bookprep:::prepare_files(
   path = dir_tmp,
   replacements = c(
     "book_title" = "My book",
@@ -81,6 +95,10 @@ prepare_files(
   )
 )
 ```
+
+-->
+
+
 
 # Prepare customised bookdown
 

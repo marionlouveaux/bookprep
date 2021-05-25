@@ -5,7 +5,8 @@ bookdown::gitbook:
       before: |
         <li><a href="./">book_title</a></li>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with {bookdown} and {bookprep}.</a></li>
+        <li><a href="https://marionlouveaux.github.io/bookprep/" target="blank">Created with {bookprep}.</a></li>
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with {bookdown}.</a></li>
     download: ["pdf", "epub"]
 bookdown::pdf_book:
   includes:

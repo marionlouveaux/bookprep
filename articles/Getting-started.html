@@ -104,7 +104,7 @@
 <div id="template-creation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#template-creation" class="anchor"></a>Template creation</h1>
-<p>The template contains Rmd files corresponding to the named chapters, an index.md file containing the content of the future index and, if needed, an extra .css file. Named chapters and index.md can include variables. These variables can be replaced with custom content using the <code>replacements</code> parameter of <code><a href="../reference/prepare_book.html">prepare_book()</a></code>.</p>
+<p>The template contains Rmd files corresponding to the named chapters, an index.md file containing the content of the future index and, if needed, an extra .css file and an extra .bib file. Named chapters and index.md can include variables. These variables can be replaced with custom content using the <code>replacements</code> parameter of <code><a href="../reference/prepare_book.html">prepare_book()</a></code>.</p>
 <p>An example of template is included in {bookprep} in <code>/book_template_example</code>. You can also provide your own template, or create a minimal one using the function <code><a href="../reference/initialize_template.html">initialize_template()</a></code>.</p>
 <!-- 
 
@@ -131,7 +131,7 @@ bookprep:::find_and_replace(
     "index_title" = "Context"
   )
 )
-#> [1] "/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmp9xTIt9/index-6bd13ba414"
+#> [1] "/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmprSrwcq/index-6483fe664f2"
 ```
 
 -->
@@ -163,10 +163,10 @@ bookprep:::prepare_files(
     "index_title" = "Context"
   )
 )
-#> [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp9xTIt9/proj-6bd1533839e/book_skeleton/_bookdown.yml"
-#> [2] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp9xTIt9/proj-6bd1533839e/book_skeleton/_output.yml"  
-#> [3] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp9xTIt9/proj-6bd1533839e/book_skeleton/index.Rmd"    
-#> [4] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp9xTIt9/proj-6bd1533839e/book_skeleton/README.md"
+#> [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprSrwcq/proj-64865779b0d/book_skeleton/_bookdown.yml"
+#> [2] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprSrwcq/proj-64865779b0d/book_skeleton/_output.yml"  
+#> [3] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprSrwcq/proj-64865779b0d/book_skeleton/index.Rmd"    
+#> [4] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprSrwcq/proj-64865779b0d/book_skeleton/README.md"
 ```
 
 -->
@@ -198,7 +198,7 @@ bookprep:::prepare_files(
 <h1 class="hasAnchor">
 <a href="#initialize-a-template" class="anchor"></a>Initialize a template</h1>
 <ul>
-<li>index.txt or index.md: Level 1 title and/or content<br>
+<li>index.txt or index.md: Level 1 title and index content<br>
 </li>
 <li>some Rmd files</li>
 </ul>

@@ -1,8 +1,8 @@
-#' Initialize a book template with named chapters and base content 
+#' Initialize a book template with named chapters and base content
 #'
-#' @param path where to create the template     
-#' @param chapters titles of Rmd files to include in the template    
-#' @param references title of the references Rmd or NULL         
+#' @param path where to create the template
+#' @param chapters titles of Rmd files to include in the template
+#' @param references title of the references Rmd or NULL
 #' @importFrom xfun write_utf8
 #'
 #' @return used for side effect: file creation in path
@@ -14,10 +14,14 @@
 #' dir.create(dir_tmp)
 #' # browseURL(dir_tmp)
 #' 
-#' initialize_template(path = dir_tmp, 
-#'                     chapters = c("Introduction", "Material and Methods",
-#'                                  "Results", "Discussion"),
-#'                                 references = NULL)
+#' initialize_template(
+#'   path = dir_tmp,
+#'   chapters = c(
+#'     "Introduction", "Material and Methods",
+#'     "Results", "Discussion"
+#'   ),
+#'   references = NULL
+#' )
 initialize_template <- function(path, chapters = c("Preface", "Introduction"),
                                 references = "References") {
   rmd_tmp <- c(chapters, references)

@@ -3,10 +3,7 @@ dir_tmp <- tempfile(pattern = "proj-")
 dir.create(dir_tmp)
 # browseURL(dir_tmp)
 
-# usethis::proj_set(path = dir_tmp, force = TRUE)
-# usethis::create_project(path = dir_tmp, rstudio = TRUE, open = FALSE)
 
-# usethis::with_project(
 withr::with_dir(
   dir_tmp,
   prepare_book(
@@ -30,7 +27,7 @@ test_that("prepare_book works", {
 
   # checks that Rproj exists
   rproj_path <- list.files(dir_tmp, pattern = "[.]Rproj$", full.names = TRUE)
-  if (length(rproj_path) != 0){
+  if (length(rproj_path) != 0) {
     expect_length(rproj_path, 1)
     # Checks that build type is website in Rproj
     rproj_content <- readLines(rproj_path)
@@ -38,27 +35,29 @@ test_that("prepare_book works", {
   }
   # Checks that there is an extra.css file in the book template example
   css_path <- list.files(system.file("book_template_example", package = "bookprep"),
-                         pattern = "extra[.]css$")
+    pattern = "extra[.]css$"
+  )
   expect_length(css_path, 1)
-  # Checks that the extra.css is in the _output.yml 
-  outputyml_path <- list.files(dir_tmp, pattern = "_output[.]yml$", full.names = TRUE) 
+  # Checks that the extra.css is in the _output.yml
+  outputyml_path <- list.files(dir_tmp, pattern = "_output[.]yml$", full.names = TRUE)
   outputyml_content <- readLines(outputyml_path)
   expect_length(grep(outputyml_content[2], pattern = "extra[.]css"), 1)
-  
-  
+
+
   # Checks that there is an extra.bib file in the book template example
   bib_path <- list.files(system.file("book_template_example", package = "bookprep"),
-                         pattern = "extra[.]bib$")
+    pattern = "extra[.]bib$"
+  )
   expect_length(bib_path, 1)
-  # Checks that the extra.bib is in the index.Rmd    
-  index_path <- list.files(dir_tmp, pattern = "index[.]Rmd$", full.names = TRUE) 
+  # Checks that the extra.bib is in the index.Rmd
+  index_path <- list.files(dir_tmp, pattern = "index[.]Rmd$", full.names = TRUE)
   index_content <- readLines(index_path)
   expect_length(grep(index_content[7], pattern = "extra[.]bib"), 1)
-  
-  
-  # Checks that content of index.md has been copied in index.Rmd and index_title replaced 
-  
-  index_path <- list.files(dir_tmp, pattern = "index[.]Rmd$", full.names = TRUE) 
+
+
+  # Checks that content of index.md has been copied in index.Rmd and index_title replaced
+
+  index_path <- list.files(dir_tmp, pattern = "index[.]Rmd$", full.names = TRUE)
   index_content <- readLines(index_path)
   expect_equal(index_content[12], paste0("# ", "Context"))
   expect_equal(index_content[13], "")
@@ -67,9 +66,11 @@ test_that("prepare_book works", {
 
 
 test_that("initialize_template gives error", {
-  expect_error(object = prepare_book(path = dir_tmp,
-                                     template = "non_existing_path"
-                                     ),
-               ".* directory does not exist."
-               )
+  expect_error(
+    object = prepare_book(
+      path = dir_tmp,
+      template = "non_existing_path"
+    ),
+    ".* directory does not exist."
+  )
 })

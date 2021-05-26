@@ -1,5 +1,5 @@
 #' Prepare customised bookdown from skeleton and template
-#' This function creates an Rstudio project in path, sets build type to "website", copies the content of book_skeleton at the root of the project, copies all files from the book template, modifies pre-defined variable book_title, author_name, creation_date, as well as any variable added by the user in replacements (index_title, index_content...), and inserts the content of index.txt in index.Rmd (here containing the user defined variables index_title and index_content).   
+#' This function creates an Rstudio project in path, sets build type to "website", copies the content of book_skeleton at the root of the project, copies all files from the book template, modifies pre-defined variable book_title, author_name, creation_date, as well as any variable added by the user in replacements (index_title, index_content...), and inserts the content of index.txt in index.Rmd (here containing the user defined variables index_title and index_content).
 #'
 #' @param path where to create the bookdown
 #' @param skeleton path to directory containing bookdown skeleton
@@ -49,7 +49,7 @@ prepare_book <- function(
 
   # Modify buildType: "BuildType: Package" to "BuildType: Website"
   rproj_path <- list.files(path, pattern = "[.]Rproj$", full.names = TRUE)
-  if (length(rproj_path) != 0) { #rstudioapi available
+  if (length(rproj_path) != 0) { # rstudioapi available
     proj_lines <- readLines(rproj_path[1])
     proj_lines_modified <- str_replace(
       string = proj_lines,
@@ -84,7 +84,7 @@ prepare_book <- function(
     )
     writeLines(text = output_modified, con = file.path(path, "_output.yml"))
   }
-  
+
   # Detect bib files and modify index.Rmd
   extra_bib <- basename(all_files_wo_index)[grepl("[.]bib$", basename(all_files_wo_index))]
   if (length(extra_bib) != 0) {
@@ -98,8 +98,8 @@ prepare_book <- function(
       )
     )
     writeLines(text = index_modified, con = file.path(path, "index.Rmd"))
-  }  
-  
+  }
+
 
   # Copy content from index.md or index.txt
   # NB: this content can contain variables such as index_title and index_content

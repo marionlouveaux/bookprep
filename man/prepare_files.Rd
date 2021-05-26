@@ -26,6 +26,7 @@ path from each modified file
 Modify all variables in files from the book skeleton
 }
 \examples{
+
 # Create temporary directory for reproducible example
 dir_tmp <- tempfile(pattern = "proj-")
 dir.create(dir_tmp)

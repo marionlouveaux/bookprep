@@ -100,7 +100,7 @@ bookprep:::prepare_files(
 
 
 
-# Prepare customised bookdown
+# Prepare a custom bookdown from a skeleton and a template
 
 ```{r examples-3, eval = FALSE}
 # Create temporary directory for reproducible example
@@ -125,8 +125,7 @@ prepare_book(
 
 # Initialize a template
 
-- index.txt or index.md: Level 1 title and index content     
-- some Rmd files    
+As stated above, the template contains named chapters (Rmd files), an index.md file containing the level 1 title and content of the future index and, if needed, an extra .css file and an extra .bib file. The function `initialize_template()` helps creating the named chapters and adding (or not) a reference chapter. You can then complete this template manually by writing custom variables in the chapter files (these will be replaced by `prepare_book()`) and adding .css and .bib files to the template folder.        
 
 
 ```{r examples-4}
@@ -135,19 +134,13 @@ dir_tmp <- tempfile(pattern = "proj-")
 dir.create(dir_tmp)
 # browseURL(dir_tmp)
 
-initialize_template(path = dir_tmp, 
-                    chapters = c("Introduction", "Material and Methods",
-                                 "Results", "Discussion"),
-                                references = NULL)
-```
-
-# Add a custom bib file
-
-The book skeleton includes a book.bib file containing references to {bookdown} and {bookprep}. The function below copies a new .bib file to the root of the project and modifies the index.Rmd to add this file.      
-
-
-
-```{r examples-5}
-
+initialize_template(
+  path = dir_tmp,
+  chapters = c(
+    "Introduction", "Material and Methods",
+    "Results", "Discussion"
+  ),
+  references = NULL
+)
 ```
 

@@ -29,8 +29,12 @@ dir_tmp <- tempfile(pattern = "proj-")
 dir.create(dir_tmp)
 # browseURL(dir_tmp)
 
-initialize_template(path = dir_tmp, 
-                    chapters = c("Introduction", "Material and Methods",
-                                 "Results", "Discussion"),
-                                references = NULL)
+initialize_template(
+  path = dir_tmp,
+  chapters = c(
+    "Introduction", "Material and Methods",
+    "Results", "Discussion"
+  ),
+  references = NULL
+)
 }

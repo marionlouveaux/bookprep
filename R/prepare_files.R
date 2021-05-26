@@ -1,4 +1,4 @@
-#' Modify all variables in files from the book skeleton 
+#' Modify all variables in files from the book skeleton
 #'
 #' @param path path to directory (skeleton) containing all files to modify
 #' @param pattern regex to identify files to prepare (by default, all Rmd, yml and md files)
@@ -8,7 +8,7 @@
 #' @return path from each modified file
 #'
 #' @examples
-
+#'
 #' # Create temporary directory for reproducible example
 #' dir_tmp <- tempfile(pattern = "proj-")
 #' dir.create(dir_tmp)

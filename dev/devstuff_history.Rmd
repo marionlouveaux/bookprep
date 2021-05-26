@@ -39,7 +39,7 @@ usethis::use_description(
     `Authors@R` = 'person("Marion", "Louveaux", email = "marion.louveaux@gmail.com",
                           role = c("aut", "cre"),
                           comment = c(ORCID = "0000-0002-1794-3748"))',
-    Description = 'Prepares a bookdown project from a customizable bookdown skeleton and, if needed, a template for the chapters. Helps creating reproducible yet flexible bookdown projects, for instance to deliver data analyses to customers following a standardized format.',
+    Description = "Prepares a bookdown project from a customizable bookdown skeleton and, if needed, a template for the chapters. Helps creating reproducible yet flexible bookdown projects, for instance to deliver data analyses to customers following a standardized format.",
     License = "GPL-3",
     URL = "https://github.com/marionlouveaux/bookprep",
     BugReports = "https://github.com/marionlouveaux/bookprep/issues"
@@ -55,8 +55,10 @@ attachment::att_amend_desc()
 usethis::use_readme_rmd()
 
 # inflate
-fusen::inflate(rmd = "dev/devstuff_history.Rmd",
-               name = "Getting started", check = FALSE)
+fusen::inflate(
+  rmd = "dev/devstuff_history.Rmd",
+  name = "Getting started", check = FALSE
+)
 
 usethis::use_github_action_check_standard()
 
@@ -188,7 +190,7 @@ test_that("find_and_replace gives error", {
 # Modify all variables in all files
 -->
 ```{r function-2}
-#' Modify all variables in files from the book skeleton 
+#' Modify all variables in files from the book skeleton
 #'
 #' @param path path to directory (skeleton) containing all files to modify
 #' @param pattern regex to identify files to prepare (by default, all Rmd, yml and md files)
@@ -198,7 +200,7 @@ test_that("find_and_replace gives error", {
 #' @return path from each modified file
 #'
 #' @examples
-
+#'
 prepare_files <- function(path, replacements = c(
                             "book_title" = "My book",
                             "author_name" = "Marion Louveaux",
@@ -280,12 +282,12 @@ test_that("prepare_files works", {
 
 
 
-# Prepare customised bookdown
+# Prepare a custom bookdown from a skeleton and a template
 
 
 ```{r function-3}
 #' Prepare customised bookdown from skeleton and template
-#' This function creates an Rstudio project in path, sets build type to "website", copies the content of book_skeleton at the root of the project, copies all files from the book template, modifies pre-defined variable book_title, author_name, creation_date, as well as any variable added by the user in replacements (index_title, index_content...), and inserts the content of index.txt in index.Rmd (here containing the user defined variables index_title and index_content).   
+#' This function creates an Rstudio project in path, sets build type to "website", copies the content of book_skeleton at the root of the project, copies all files from the book template, modifies pre-defined variable book_title, author_name, creation_date, as well as any variable added by the user in replacements (index_title, index_content...), and inserts the content of index.txt in index.Rmd (here containing the user defined variables index_title and index_content).
 #'
 #' @param path where to create the bookdown
 #' @param skeleton path to directory containing bookdown skeleton
@@ -317,7 +319,7 @@ prepare_book <- function(
 
   # Modify buildType: "BuildType: Package" to "BuildType: Website"
   rproj_path <- list.files(path, pattern = "[.]Rproj$", full.names = TRUE)
-  if (length(rproj_path) != 0) { #rstudioapi available
+  if (length(rproj_path) != 0) { # rstudioapi available
     proj_lines <- readLines(rproj_path[1])
     proj_lines_modified <- str_replace(
       string = proj_lines,
@@ -352,7 +354,7 @@ prepare_book <- function(
     )
     writeLines(text = output_modified, con = file.path(path, "_output.yml"))
   }
-  
+
   # Detect bib files and modify index.Rmd
   extra_bib <- basename(all_files_wo_index)[grepl("[.]bib$", basename(all_files_wo_index))]
   if (length(extra_bib) != 0) {
@@ -366,8 +368,8 @@ prepare_book <- function(
       )
     )
     writeLines(text = index_modified, con = file.path(path, "index.Rmd"))
-  }  
-  
+  }
+
 
   # Copy content from index.md or index.txt
   # NB: this content can contain variables such as index_title and index_content
@@ -422,10 +424,7 @@ dir_tmp <- tempfile(pattern = "proj-")
 dir.create(dir_tmp)
 # browseURL(dir_tmp)
 
-# usethis::proj_set(path = dir_tmp, force = TRUE)
-# usethis::create_project(path = dir_tmp, rstudio = TRUE, open = FALSE)
 
-# usethis::with_project(
 withr::with_dir(
   dir_tmp,
   prepare_book(
@@ -449,7 +448,7 @@ test_that("prepare_book works", {
 
   # checks that Rproj exists
   rproj_path <- list.files(dir_tmp, pattern = "[.]Rproj$", full.names = TRUE)
-  if (length(rproj_path) != 0){
+  if (length(rproj_path) != 0) {
     expect_length(rproj_path, 1)
     # Checks that build type is website in Rproj
     rproj_content <- readLines(rproj_path)
@@ -457,27 +456,29 @@ test_that("prepare_book works", {
   }
   # Checks that there is an extra.css file in the book template example
   css_path <- list.files(system.file("book_template_example", package = "bookprep"),
-                         pattern = "extra[.]css$")
+    pattern = "extra[.]css$"
+  )
   expect_length(css_path, 1)
-  # Checks that the extra.css is in the _output.yml 
-  outputyml_path <- list.files(dir_tmp, pattern = "_output[.]yml$", full.names = TRUE) 
+  # Checks that the extra.css is in the _output.yml
+  outputyml_path <- list.files(dir_tmp, pattern = "_output[.]yml$", full.names = TRUE)
   outputyml_content <- readLines(outputyml_path)
   expect_length(grep(outputyml_content[2], pattern = "extra[.]css"), 1)
-  
-  
+
+
   # Checks that there is an extra.bib file in the book template example
   bib_path <- list.files(system.file("book_template_example", package = "bookprep"),
-                         pattern = "extra[.]bib$")
+    pattern = "extra[.]bib$"
+  )
   expect_length(bib_path, 1)
-  # Checks that the extra.bib is in the index.Rmd    
-  index_path <- list.files(dir_tmp, pattern = "index[.]Rmd$", full.names = TRUE) 
+  # Checks that the extra.bib is in the index.Rmd
+  index_path <- list.files(dir_tmp, pattern = "index[.]Rmd$", full.names = TRUE)
   index_content <- readLines(index_path)
   expect_length(grep(index_content[7], pattern = "extra[.]bib"), 1)
-  
-  
-  # Checks that content of index.md has been copied in index.Rmd and index_title replaced 
-  
-  index_path <- list.files(dir_tmp, pattern = "index[.]Rmd$", full.names = TRUE) 
+
+
+  # Checks that content of index.md has been copied in index.Rmd and index_title replaced
+
+  index_path <- list.files(dir_tmp, pattern = "index[.]Rmd$", full.names = TRUE)
   index_content <- readLines(index_path)
   expect_equal(index_content[12], paste0("# ", "Context"))
   expect_equal(index_content[13], "")
@@ -486,26 +487,27 @@ test_that("prepare_book works", {
 
 
 test_that("initialize_template gives error", {
-  expect_error(object = prepare_book(path = dir_tmp,
-                                     template = "non_existing_path"
-                                     ),
-               ".* directory does not exist."
-               )
+  expect_error(
+    object = prepare_book(
+      path = dir_tmp,
+      template = "non_existing_path"
+    ),
+    ".* directory does not exist."
+  )
 })
 ```
 
 
 # Initialize a template
 
-- index.txt or index.md: Level 1 title and index content     
-- some Rmd files    
+As stated above, the template contains named chapters (Rmd files), an index.md file containing the level 1 title and content of the future index and, if needed, an extra .css file and an extra .bib file. The function `initialize_template()` helps creating the named chapters and adding (or not) a reference chapter. You can then complete this template manually by writing custom variables in the chapter files (these will be replaced by `prepare_book()`) and adding .css and .bib files to the template folder.        
 
 ```{r function-4}
-#' Initialize a book template with named chapters and base content 
+#' Initialize a book template with named chapters and base content
 #'
-#' @param path where to create the template     
-#' @param chapters titles of Rmd files to include in the template    
-#' @param references title of the references Rmd or NULL         
+#' @param path where to create the template
+#' @param chapters titles of Rmd files to include in the template
+#' @param references title of the references Rmd or NULL
 #' @importFrom xfun write_utf8
 #'
 #' @return used for side effect: file creation in path
@@ -541,10 +543,14 @@ dir_tmp <- tempfile(pattern = "proj-")
 dir.create(dir_tmp)
 # browseURL(dir_tmp)
 
-initialize_template(path = dir_tmp, 
-                    chapters = c("Introduction", "Material and Methods",
-                                 "Results", "Discussion"),
-                                references = NULL)
+initialize_template(
+  path = dir_tmp,
+  chapters = c(
+    "Introduction", "Material and Methods",
+    "Results", "Discussion"
+  ),
+  references = NULL
+)
 ```
 
 ```{r tests-4}
@@ -553,10 +559,14 @@ dir_tmp <- tempfile(pattern = "proj-")
 dir.create(dir_tmp)
 # browseURL(dir_tmp)
 
-initialize_template(path = dir_tmp, 
-                    chapters = c("Introduction", "Material and Methods",
-                                 "Results", "Discussion"),
-                                references = NULL)
+initialize_template(
+  path = dir_tmp,
+  chapters = c(
+    "Introduction", "Material and Methods",
+    "Results", "Discussion"
+  ),
+  references = NULL
+)
 
 test_that("initialize_template works", {
   expect_true(file.exists(file.path(dir_tmp, "00-Introduction.Rmd")))
@@ -584,27 +594,3 @@ test_that("initialize_template gives error", {
   )
 })
 ```
-
-
-
-# Add a custom bib file
-
-The book skeleton includes a book.bib file containing references to {bookdown} and {bookprep}. The function below copies a new .bib file to the root of the project and modifies the index.Rmd to add this file.      
-
-
-```{r function-5}
-
-```
-
-
-```{r examples-5}
-
-```
-
-```{r tests-5}
-
-```
-
-
-
-

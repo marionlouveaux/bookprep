@@ -131,7 +131,7 @@ bookprep:::find_and_replace(
     "index_title" = "Context"
   )
 )
-#> [1] "/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmprSrwcq/index-6483fe664f2"
+#> [1] "/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpIrRpew/index-7f44e75243b"
 ```
 
 -->
@@ -163,17 +163,17 @@ bookprep:::prepare_files(
     "index_title" = "Context"
   )
 )
-#> [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprSrwcq/proj-64865779b0d/book_skeleton/_bookdown.yml"
-#> [2] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprSrwcq/proj-64865779b0d/book_skeleton/_output.yml"  
-#> [3] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprSrwcq/proj-64865779b0d/book_skeleton/index.Rmd"    
-#> [4] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprSrwcq/proj-64865779b0d/book_skeleton/README.md"
+#> [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpIrRpew/proj-7f46a206e0b/book_skeleton/_bookdown.yml"
+#> [2] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpIrRpew/proj-7f46a206e0b/book_skeleton/_output.yml"  
+#> [3] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpIrRpew/proj-7f46a206e0b/book_skeleton/index.Rmd"    
+#> [4] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpIrRpew/proj-7f46a206e0b/book_skeleton/README.md"
 ```
 
 -->
 </div>
-<div id="prepare-customised-bookdown" class="section level1">
+<div id="prepare-a-custom-bookdown-from-a-skeleton-and-a-template" class="section level1">
 <h1 class="hasAnchor">
-<a href="#prepare-customised-bookdown" class="anchor"></a>Prepare customised bookdown</h1>
+<a href="#prepare-a-custom-bookdown-from-a-skeleton-and-a-template" class="anchor"></a>Prepare a custom bookdown from a skeleton and a template</h1>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Create temporary directory for reproducible example</span>
 <span class="va">dir_tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"proj-"</span><span class="op">)</span>
@@ -197,26 +197,21 @@ bookprep:::prepare_files(
 <div id="initialize-a-template" class="section level1">
 <h1 class="hasAnchor">
 <a href="#initialize-a-template" class="anchor"></a>Initialize a template</h1>
-<ul>
-<li>index.txt or index.md: Level 1 title and index content<br>
-</li>
-<li>some Rmd files</li>
-</ul>
+<p>As stated above, the template contains named chapters (Rmd files), an index.md file containing the level 1 title and content of the future index and, if needed, an extra .css file and an extra .bib file. The function <code><a href="../reference/initialize_template.html">initialize_template()</a></code> helps creating the named chapters and adding (or not) a reference chapter. You can then complete this template manually by writing custom variables in the chapter files (these will be replaced by <code><a href="../reference/prepare_book.html">prepare_book()</a></code>) and adding .css and .bib files to the template folder.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Create temporary directory for reproducible example</span>
 <span class="va">dir_tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"proj-"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="va">dir_tmp</span><span class="op">)</span>
 <span class="co"># browseURL(dir_tmp)</span>
 
-<span class="fu"><a href="../reference/initialize_template.html">initialize_template</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">dir_tmp</span>, 
-                    chapters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Introduction"</span>, <span class="st">"Material and Methods"</span>,
-                                 <span class="st">"Results"</span>, <span class="st">"Discussion"</span><span class="op">)</span>,
-                                references <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
-</div>
-<div id="add-a-custom-bib-file" class="section level1">
-<h1 class="hasAnchor">
-<a href="#add-a-custom-bib-file" class="anchor"></a>Add a custom bib file</h1>
-<p>The book skeleton includes a book.bib file containing references to {bookdown} and {bookprep}. The function below copies a new .bib file to the root of the project and modifies the index.Rmd to add this file.</p>
+<span class="fu"><a href="../reference/initialize_template.html">initialize_template</a></span><span class="op">(</span>
+  path <span class="op">=</span> <span class="va">dir_tmp</span>,
+  chapters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    <span class="st">"Introduction"</span>, <span class="st">"Material and Methods"</span>,
+    <span class="st">"Results"</span>, <span class="st">"Discussion"</span>
+  <span class="op">)</span>,
+  references <span class="op">=</span> <span class="cn">NULL</span>
+<span class="op">)</span></code></pre></div>
 </div>
   </div>
 

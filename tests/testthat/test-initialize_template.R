@@ -24,7 +24,6 @@ dir.create(dir_tmp)
 file.create(file.path(dir_tmp, "00-Preface.Rmd"))
 
 test_that("initialize_template gives error", {
-  skip_if_translated()
   expect_error(
     object = initialize_template(
       path = dir_tmp,

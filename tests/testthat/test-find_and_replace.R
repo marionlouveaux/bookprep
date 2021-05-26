@@ -22,7 +22,6 @@ test_that("find_and_replace works", {
 
 
 test_that("find_and_replace gives error", {
-  skip_if_translated()
   expect_error(
     object = find_and_replace(
       file = "non_existing_path",

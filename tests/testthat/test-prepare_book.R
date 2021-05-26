@@ -67,7 +67,6 @@ test_that("prepare_book works", {
 
 
 test_that("initialize_template gives error", {
-  skip_if_translated()
   expect_error(object = prepare_book(path = dir_tmp,
                                      template = "non_existing_path"
                                      ),

@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 ![GitHub R package version](https://img.shields.io/github/r-package/v/marionlouveaux/bookprep?style=plastic)
 ![GitHub](https://img.shields.io/github/license/marionlouveaux/bookprep?style=plastic)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4806181.svg)](https://doi.org/10.5281/zenodo.4806181)
 [![R build status](https://github.com/marionlouveaux/bookprep/workflows/R-CMD-check/badge.svg)](https://github.com/marionlouveaux/bookprep/actions)
 [![Codecov test coverage](https://codecov.io/gh/marionlouveaux/bookprep/branch/master/graph/badge.svg)](https://codecov.io/gh/marionlouveaux/bookprep?branch=master)
 <!-- badges: end -->
@@ -77,6 +78,9 @@ prepare_book(
 
 
 ## How to cite     
+
+Please cite as:      
+Marion Louveaux. (2021, May 26). bookprep: an R package to reproducibly prepare a {bookdown} project from a customizable skeleton and a template (Version v1.0.0). Zenodo. http://doi.org/10.5281/zenodo.4806181
 
 ## Code of Conduct
 

@@ -8,6 +8,7 @@
 ![GitHub R package
 version](https://img.shields.io/github/r-package/v/marionlouveaux/bookprep?style=plastic)
 ![GitHub](https://img.shields.io/github/license/marionlouveaux/bookprep?style=plastic)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4806181.svg)](https://doi.org/10.5281/zenodo.4806181)
 [![R build
 status](https://github.com/marionlouveaux/bookprep/workflows/R-CMD-check/badge.svg)](https://github.com/marionlouveaux/bookprep/actions)
 [![Codecov test
@@ -66,18 +67,18 @@ prepare_book(
     "index_title" = "Context"
   )
 )
-#> v Setting active project to 'C:/Users/Marion/AppData/Local/Temp/RtmpSqsbax/proj-3dec4b867975'
+#> v Setting active project to 'C:/Users/Marion/AppData/Local/Temp/RtmpW2rUdY/proj-2e082b0012ca'
 #> v Creating 'R/'
 #> v Writing a sentinel file '.here'
 #> * Build robust paths within your project via `here::here()`
 #> * Learn more at <https://here.r-lib.org>
 #> v Setting active project to '<no active project>'
-#> [1] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpSqsbax\\proj-3dec4b867975/_bookdown.yml"     
-#> [2] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpSqsbax\\proj-3dec4b867975/_output.yml"       
-#> [3] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpSqsbax\\proj-3dec4b867975/01-exploration.Rmd"
-#> [4] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpSqsbax\\proj-3dec4b867975/02-results.Rmd"    
-#> [5] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpSqsbax\\proj-3dec4b867975/index.Rmd"         
-#> [6] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpSqsbax\\proj-3dec4b867975/README.md"
+#> [1] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpW2rUdY\\proj-2e082b0012ca/_bookdown.yml"     
+#> [2] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpW2rUdY\\proj-2e082b0012ca/_output.yml"       
+#> [3] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpW2rUdY\\proj-2e082b0012ca/01-exploration.Rmd"
+#> [4] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpW2rUdY\\proj-2e082b0012ca/02-results.Rmd"    
+#> [5] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpW2rUdY\\proj-2e082b0012ca/index.Rmd"         
+#> [6] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpW2rUdY\\proj-2e082b0012ca/README.md"
 ```
 
 ## See also
@@ -87,6 +88,11 @@ prepare_book(
 {bookdown}: <https://bookdown.org/>
 
 ## How to cite
+
+Please cite as:  
+Marion Louveaux. (2021, May 26). bookprep: an R package to reproducibly
+prepare a {bookdown} project from a customizable skeleton and a template
+(Version v1.0.0). Zenodo. <http://doi.org/10.5281/zenodo.4806181>
 
 ## Code of Conduct
 

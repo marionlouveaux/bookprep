@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 # bookprep
 
 <!-- badges: start -->
-![GitHub R package version](https://img.shields.io/github/r-package/v/marionlouveaux/bookprep?style=plastic)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/marionlouveaux/bookprep?style=plastic)
 ![GitHub](https://img.shields.io/github/license/marionlouveaux/bookprep?style=plastic)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4806181.svg)](https://doi.org/10.5281/zenodo.4806181)
 [![R build status](https://github.com/marionlouveaux/bookprep/workflows/R-CMD-check/badge.svg)](https://github.com/marionlouveaux/bookprep/actions)

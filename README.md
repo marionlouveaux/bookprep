@@ -5,8 +5,8 @@
 
 <!-- badges: start -->
 
-![GitHub R package
-version](https://img.shields.io/github/r-package/v/marionlouveaux/bookprep?style=plastic)
+![GitHub release (latest by
+date)](https://img.shields.io/github/v/release/marionlouveaux/bookprep?style=plastic)
 ![GitHub](https://img.shields.io/github/license/marionlouveaux/bookprep?style=plastic)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4806181.svg)](https://doi.org/10.5281/zenodo.4806181)
 [![R build
@@ -67,18 +67,18 @@ prepare_book(
     "index_title" = "Context"
   )
 )
-#> v Setting active project to 'C:/Users/Marion/AppData/Local/Temp/RtmpW2rUdY/proj-2e082b0012ca'
+#> v Setting active project to 'C:/Users/Marion/AppData/Local/Temp/Rtmp08qsHE/proj-56bc2b97f3b'
 #> v Creating 'R/'
 #> v Writing a sentinel file '.here'
 #> * Build robust paths within your project via `here::here()`
 #> * Learn more at <https://here.r-lib.org>
 #> v Setting active project to '<no active project>'
-#> [1] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpW2rUdY\\proj-2e082b0012ca/_bookdown.yml"     
-#> [2] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpW2rUdY\\proj-2e082b0012ca/_output.yml"       
-#> [3] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpW2rUdY\\proj-2e082b0012ca/01-exploration.Rmd"
-#> [4] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpW2rUdY\\proj-2e082b0012ca/02-results.Rmd"    
-#> [5] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpW2rUdY\\proj-2e082b0012ca/index.Rmd"         
-#> [6] "C:\\Users\\Marion\\AppData\\Local\\Temp\\RtmpW2rUdY\\proj-2e082b0012ca/README.md"
+#> [1] "C:\\Users\\Marion\\AppData\\Local\\Temp\\Rtmp08qsHE\\proj-56bc2b97f3b/_bookdown.yml"     
+#> [2] "C:\\Users\\Marion\\AppData\\Local\\Temp\\Rtmp08qsHE\\proj-56bc2b97f3b/_output.yml"       
+#> [3] "C:\\Users\\Marion\\AppData\\Local\\Temp\\Rtmp08qsHE\\proj-56bc2b97f3b/01-exploration.Rmd"
+#> [4] "C:\\Users\\Marion\\AppData\\Local\\Temp\\Rtmp08qsHE\\proj-56bc2b97f3b/02-results.Rmd"    
+#> [5] "C:\\Users\\Marion\\AppData\\Local\\Temp\\Rtmp08qsHE\\proj-56bc2b97f3b/index.Rmd"         
+#> [6] "C:\\Users\\Marion\\AppData\\Local\\Temp\\Rtmp08qsHE\\proj-56bc2b97f3b/README.md"
 ```
 
 ## See also
